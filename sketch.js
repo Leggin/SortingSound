@@ -3,6 +3,8 @@ var canvasWidth = 1000;
 var quaderWidth = 8;
 var numberQuads = canvasWidth / quaderWidth;
 var sor;
+var start = false;
+var stilrunning = false;
 
 function setup() {
     createCanvas(canvasWidth, 500);
@@ -10,6 +12,7 @@ function setup() {
         quaders[i] = new Quader(quaderWidth, floor(random(height)));
     }
     sor = new Sorter(quaders);
+    frameRate(20);
 
 }
 
@@ -18,9 +21,6 @@ function draw() {
     for (var i = 0; i < numberQuads; i++) {
         quaders[i].show(i * quaders[i].w, height - quaders[i].h);
     }
-    if (sor.index >= quaders.length) {
 
-    } else {
-        sor.insertionSort();
-    }
+        stilrunning = sor.selectionSort();
 }
